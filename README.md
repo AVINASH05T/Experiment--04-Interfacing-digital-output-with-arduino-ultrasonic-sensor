@@ -1,4 +1,7 @@
-# EXPERIMENT-NO--05-Distance measurement using Ultrasonic sensor
+# EXPERIMENT NO 04 Distance measurement using Ultrasonic sensor
+## NAME : AVINASH T
+## ROLL NO: 212223230026
+## DEPT: ARTIFICIAL INTELLIGENCE AND DATA SCIENCE
 
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
@@ -39,7 +42,9 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ![image](https://user-images.githubusercontent.com/36288975/166430594-5adb4ca9-5a42-4781-a7e6-7236b3766a85.png)
 
+![image](https://github.com/AVINASH05T/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/151514286/251e5239-3bc0-4890-bfeb-78ce9d9c3ab1)
 
+![image](https://github.com/AVINASH05T/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/151514286/169a3856-60f1-4ee0-9c13-6b3c98a492bc)
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -56,38 +61,72 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### PROGRAM 
 
+```c
+const int trigPin=10;
+const int echoPin=9;
+int red=7;
+int green=6;
+long duration;
+float distance;
 
+void setup()
+{
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(red, OUTPUT);
+  pinMode(green, INPUT);
+  Serial.begin(9600);
+  
+}
+
+void loop()
+{
+  
+  digitalWrite(trigPin,LOW);
+  delay(20); 
+  digitalWrite(trigPin,HIGH);
+  delay(20);
+  digitalWrite(trigPin,LOW);
+  duration=pulseIn(echoPin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print(distance);
+  Serial.println("cms");
+  
+  if(distance >5)
+  {
+    digitalWrite(red,HIGH);
+    delay(200);
+    digitalWrite(red,LOW);
+    delay(200); 
+  }
+  else 
+  {  
+    digitalWrite(green,HIGH);
+    delay(200); 
+    digitalWrite(green,LOW);
+    delay(200); 
+  } 
+}
+```
 
 
 
 
 ### Distance vs measurement table 
-
 			
  
+![image](https://github.com/AVINASH05T/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/151514286/808d87bf-e1e9-4e80-b955-f9b05da1b66c)
 			
-			
-			
+						
+```c 
+Average error = sum/ number of readings = 0.316
+```
 
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
-
-			
-			
-			
-			
-			
-			Average error = sum/ number of readings 
  
-
-
-
-
-
-
 
 
 ### RESULTS
-
+Interfacing digital output with arduino ultrasonic sensor was successfully created.
 
 
  
